@@ -56,6 +56,10 @@ RUN chmod +x /app/start.sh
 # Ensure data directory exists and is writable (for JSON fallback)
 RUN mkdir -p /app/server/db/data && chmod -R 777 /app/server/db/data
 
+# Forward Nginx request and error logs to Docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log
+
 # Expose port 80 (Nginx)
 EXPOSE 80
 
@@ -63,9 +67,9 @@ EXPOSE 80
 ENV PORT=3002
 ENV NODE_ENV=production
 
-# Health check
+# Health check (Use 127.0.0.1 instead of localhost to avoid IPv6 issues in Alpine)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
-    CMD wget -qO- http://localhost/api/health || exit 1
+    CMD wget -qO- http://127.0.0.1/api/health || exit 1
 
 # Start both services
 CMD ["/app/start.sh"]

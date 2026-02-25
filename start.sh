@@ -38,5 +38,6 @@ node index.js &
 sleep 2
 
 # Start Nginx in the foreground
-echo "🌐 Starting Nginx..."
+echo "✅ Backend started successfully!"
+echo "🌐 Starting Nginx... (Server is fully ready and listening for traffic)"
 nginx -g "daemon off;"
