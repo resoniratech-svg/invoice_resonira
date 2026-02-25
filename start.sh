@@ -8,15 +8,19 @@ cd /app/server
 echo "⏳ Waiting for database..."
 MAX_RETRIES=30
 RETRY_COUNT=0
-until npx prisma db execute --schema=./prisma/schema.prisma --stdin <<< "SELECT 1" > /dev/null 2>&1; do
-    RETRY_COUNT=$((RETRY_COUNT + 1))
-    if [ $RETRY_COUNT -ge $MAX_RETRIES ]; then
-        echo "⚠️ Database not available after ${MAX_RETRIES} retries, continuing anyway..."
+while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+    if echo "SELECT 1" | npx prisma db execute --schema=./prisma/schema.prisma --stdin > /dev/null 2>&1; then
+        echo "✅ Database is ready!"
         break
     fi
+    RETRY_COUNT=$((RETRY_COUNT + 1))
     echo "  Waiting for database... (attempt $RETRY_COUNT/$MAX_RETRIES)"
     sleep 2
 done
+
+if [ $RETRY_COUNT -ge $MAX_RETRIES ]; then
+    echo "⚠️ Database not available after ${MAX_RETRIES} retries, continuing anyway..."
+fi
 
 # Push schema to database (creates tables if they don't exist)
 echo "📦 Pushing database schema..."
