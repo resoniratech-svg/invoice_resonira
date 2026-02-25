@@ -1,0 +1,108 @@
+[
+  {
+    "id": "1768295186853",
+    "type": "invoice",
+    "referenceNumber": "01",
+    "date": "2026-01-20",
+    "validityDate": "2026-02-12",
+    "subject": "",
+    "description": "",
+    "preparedBy": "",
+    "preparedByEmail": "",
+    "paymentTerms": "100% advance payment with a firm Purchase Order",
+    "deliveryTerms": "As mutually agreed",
+    "status": "sent",
+    "client": {
+      "companyName": "Swetha-Saiphani clinics",
+      "attentionTo": "Dr.B.Saiphani Chandra",
+      "address": "6-656/1, Ambedkar nagar, Karimnagar, 505001",
+      "phone": "+918978058580",
+      "email": "saiphanib@gmail.com",
+      "gstNo": "36AFVFS2812J1ZH"
+    },
+    "lineItems": [
+      {
+        "id": "1",
+        "description": "Domain Registration for\n.com and .clinic",
+        "duration": "1 Year",
+        "quantity": 1,
+        "unitPrice": 9196,
+        "total": 9196
+      },
+      {
+        "id": "1768294938570",
+        "description": "Web Development",
+        "duration": "One-time",
+        "quantity": 1,
+        "unitPrice": 40000,
+        "total": 40000
+      },
+      {
+        "id": "1768294976897",
+        "description": "Digital Marketing",
+        "duration": "1 Month",
+        "quantity": 1,
+        "unitPrice": 45000,
+        "total": 45000
+      },
+      {
+        "id": "1768295051503",
+        "description": "Logo Trademark",
+        "duration": "One-time",
+        "quantity": 1,
+        "unitPrice": 6500,
+        "total": 6500
+      }
+    ],
+    "subtotal": 100696,
+    "gstRate": 18,
+    "gstAmount": 18125.28,
+    "grandTotal": 118821.28,
+    "advancePayment": 118821.28,
+    "balanceDue": 0,
+    "amountInWords": "One Lakh Eighteen Thousand Eight Hundred and Twenty One Rupees and Twenty Eight Paise Only",
+    "createdAt": "2026-01-13T09:06:26.854Z",
+    "updatedAt": "2026-02-05T16:05:16.245Z"
+  },
+  {
+    "id": "1770296361200",
+    "type": "invoice",
+    "referenceNumber": "02",
+    "date": "2026-01-27",
+    "validityDate": "2026-03-07",
+    "subject": "",
+    "description": "",
+    "preparedBy": "",
+    "preparedByEmail": "",
+    "paymentTerms": "100% advance payment with a firm Purchase Order",
+    "deliveryTerms": "As mutually agreed",
+    "status": "accepted",
+    "client": {
+      "companyName": "Swetha Sai Phani Clinics",
+      "attentionTo": "Dr Sai Phani Chandra",
+      "address": "Ambedkar nagar",
+      "phone": "8978058580",
+      "email": "saiphanib@gmail.com",
+      "gstNo": "36AFVFS2812J1ZH"
+    },
+    "lineItems": [
+      {
+        "id": "1",
+        "description": "HMS +MED AI",
+        "duration": "1 Year",
+        "quantity": 1,
+        "unitPrice": 60000,
+        "total": 60000
+      }
+    ],
+    "subtotal": 60000,
+    "gstRate": 18,
+    "gstAmount": 10800,
+    "grandTotal": 70800,
+    "advancePayment": 70800,
+    "balanceDue": 0,
+    "amountInWords": "Seventy Thousand Eight Hundred Rupees Only",
+    "createdAt": "2026-02-05T12:59:21.200Z",
+    "updatedAt": "2026-02-05T13:09:10.635Z"
+  }
+]

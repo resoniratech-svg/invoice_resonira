@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres123@postgres:5432/invoice_system
+      - PORT=3002
+      - NODE_ENV=production
+      # Uncomment and set these for email support:
+      # - EMAIL_HOST=smtp.gmail.com
+      # - EMAIL_PORT=587
+      # - EMAIL_USER=your-email@gmail.com
+      # - EMAIL_PASS=your-app-password
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=invoice_system
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

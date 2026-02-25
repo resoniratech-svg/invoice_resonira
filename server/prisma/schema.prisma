@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Invoice {
+  id              String   @id
+  type            String   @default("invoice") // "quotation" or "invoice"
+  referenceNumber String?
+  date            String?
+  validityDate    String?
+  subject         String?
+  description     String?
+  preparedBy      String?
+  preparedByEmail String?
+
+  // Client info stored as JSON
+  client Json?
+
+  // Line items as related records
+  lineItems LineItem[]
+
+  subtotal       Float?
+  gstRate        Float?
+  gstAmount      Float?
+  grandTotal     Float?
+  advancePayment Float?  @default(0)
+  balanceDue     Float?
+  amountInWords  String?
+  paymentTerms   String?
+  deliveryTerms  String?
+  status         String  @default("draft")
+
+  createdAt String?
+  updatedAt String?
+}
+
+model LineItem {
+  id          String  @id @default(cuid())
+  description String?
+  duration    String?
+  quantity    Float?
+  unitPrice   Float?
+  total       Float?
+
+  invoice   Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  invoiceId String
+}
+
+model Settings {
+  id           String   @id @default(cuid())
+  name         String?
+  gstin        String?
+  state        String?
+  state_code   String?
+  pan          String?
+  sales_phone  String?
+  support_phone String?
+  email        String?
+  address      String?
+  logo         String?  @db.Text
+  updatedAt    DateTime @default(now()) @updatedAt
+}

@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Professional Corporate Navy Theme */
+    --background: 220 25% 97%;
+    --foreground: 220 40% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 13%;
+
+    --primary: 220 65% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 94%;
+    --secondary-foreground: 220 40% 20%;
+
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 45 85% 55%;
+    --accent-foreground: 220 40% 13%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 220 65% 25%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --success: 152 60% 42%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 210 100% 50%;
+    --info-foreground: 0 0% 100%;
+
+    /* Invoice specific */
+    --invoice-header: 220 65% 20%;
+    --invoice-accent: 45 85% 55%;
+    --invoice-border: 220 20% 85%;
+    --invoice-row-alt: 220 25% 98%;
+    --invoice-total: 220 65% 25%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 65% 25%), hsl(220 65% 35%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 85% 55%), hsl(35 85% 50%));
+    --gradient-header: linear-gradient(135deg, hsl(220 65% 18%), hsl(220 65% 28%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 20% 20% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 20% 20% / 0.08), 0 2px 4px -2px hsl(220 20% 20% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(220 20% 20% / 0.1), 0 4px 6px -4px hsl(220 20% 20% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(220 20% 20% / 0.1), 0 8px 10px -6px hsl(220 20% 20% / 0.05);
+
+    --sidebar-background: 220 65% 20%;
+    --sidebar-foreground: 220 20% 95%;
+    --sidebar-primary: 45 85% 55%;
+    --sidebar-primary-foreground: 220 40% 13%;
+    --sidebar-accent: 220 50% 30%;
+    --sidebar-accent-foreground: 220 20% 95%;
+    --sidebar-border: 220 50% 28%;
+    --sidebar-ring: 45 85% 55%;
+  }
+
+  .dark {
+    --background: 220 30% 8%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 30% 12%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 30% 12%;
+    --popover-foreground: 220 15% 95%;
+
+    --primary: 45 85% 55%;
+    --primary-foreground: 220 40% 13%;
+
+    --secondary: 220 30% 18%;
+    --secondary-foreground: 220 15% 90%;
+
+    --muted: 220 25% 16%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 220 50% 35%;
+    --accent-foreground: 220 15% 95%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 45 85% 55%;
+
+    --invoice-header: 220 50% 18%;
+    --invoice-accent: 45 85% 55%;
+    --invoice-border: 220 25% 25%;
+    --invoice-row-alt: 220 30% 14%;
+    --invoice-total: 45 85% 55%;
+
+    --sidebar-background: 220 35% 10%;
+    --sidebar-foreground: 220 15% 95%;
+    --sidebar-primary: 45 85% 55%;
+    --sidebar-primary-foreground: 220 40% 13%;
+    --sidebar-accent: 220 35% 18%;
+    --sidebar-accent-foreground: 220 15% 95%;
+    --sidebar-border: 220 30% 18%;
+    --sidebar-ring: 45 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .invoice-card {
+    @apply bg-card rounded-lg border border-border;
+    box-shadow: var(--shadow-md);
+  }
+
+  .invoice-header {
+    background: var(--gradient-header);
+    @apply text-white;
+  }
+
+  .invoice-table-header {
+    @apply bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide;
+  }
+
+  .invoice-row-alt {
+    @apply bg-invoice-row-alt;
+  }
+
+  .invoice-total-row {
+    @apply bg-primary text-primary-foreground font-bold;
+  }
+
+  .stat-card {
+    @apply bg-card rounded-xl p-6 border border-border transition-all duration-300 hover:shadow-lg;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-primary-gradient {
+    background: var(--gradient-primary);
+    @apply text-white font-medium transition-all duration-200;
+  }
+
+  .btn-primary-gradient:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  .btn-accent-gradient {
+    background: var(--gradient-accent);
+    @apply text-foreground font-semibold transition-all duration-200;
+  }
+
+  .input-invoice {
+    @apply border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-invoice {
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .invoice-card {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+  }
+}

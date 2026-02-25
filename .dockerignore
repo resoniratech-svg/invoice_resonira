@@ -1,0 +1,13 @@
+node_modules
+.git
+.gitignore
+*.md
+.env
+.env.local
+.env.*.local
+dist
+server/db/data
+server/node_modules
+bun.lockb
+.vscode
+.idea
