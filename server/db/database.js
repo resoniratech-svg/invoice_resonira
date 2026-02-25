@@ -47,7 +47,6 @@ const prismaDb = {
                     client: client || {},
                     lineItems: lineItems ? {
                         create: lineItems.map(item => ({
-                            id: item.id,
                             description: item.description,
                             duration: item.duration,
                             quantity: item.quantity,
@@ -75,7 +74,6 @@ const prismaDb = {
                     client: client !== undefined ? client : undefined,
                     lineItems: lineItems ? {
                         create: lineItems.map(item => ({
-                            id: item.id,
                             description: item.description,
                             duration: item.duration,
                             quantity: item.quantity,

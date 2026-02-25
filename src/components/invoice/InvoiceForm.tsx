@@ -81,7 +81,7 @@ export function InvoiceForm({ invoice, onSave, onClose }: InvoiceFormProps) {
   const [lineItems, setLineItems] = useState<LineItem[]>(
     invoice?.lineItems || [
       {
-        id: '1',
+        id: Date.now().toString(),
         description: '',
         duration: '1 Year',
         quantity: 1,

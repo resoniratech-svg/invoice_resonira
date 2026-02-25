@@ -24,7 +24,10 @@ export const api = {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(invoice),
         });
-        if (!response.ok) throw new Error('Failed to create invoice');
+        if (!response.ok) {
+            const error = await response.json().catch(() => ({}));
+            throw new Error(error.error || 'Failed to create invoice');
+        }
         return response.json();
     },
 
@@ -34,7 +37,10 @@ export const api = {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(invoice),
         });
-        if (!response.ok) throw new Error('Failed to update invoice');
+        if (!response.ok) {
+            const error = await response.json().catch(() => ({}));
+            throw new Error(error.error || 'Failed to update invoice');
+        }
         return response.json();
     },
 
